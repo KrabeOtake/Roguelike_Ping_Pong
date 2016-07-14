@@ -7,41 +7,60 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#fff"
+    android:background="@color/colorBlack"
     android:orientation="vertical"
     android:gravity="center"
     tools:context="com.example.pingpong.MenuActivity">
 
-    <Button
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pingpong"/>
+
+    <ImageButton
         android:id="@+id/menu_start_button"
-        android:layout_width="120dp"
+        android:background="@color/colorBlack"
+        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:clickable="true"
         android:onClick="onStart"
-        android:text="@string/start_button_title" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/start" />
 
-    <Button
+    <ImageButton
         android:id="@+id/menu_duel_button"
-        android:layout_width="120dp"
+        android:background="@color/colorBlack"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:clickable="true"
         android:onClick="onDuel"
-        android:text="@string/duel_button_title" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/duel" />
 
-    <Button
+    <ImageButton
         android:id="@+id/menu_settings_button"
-        android:layout_width="120dp"
+        android:background="@color/colorBlack"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:clickable="true"
         android:onClick="onSettings"
-        android:text="@string/settings_button_title" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/settings" />
 
-    <Button
+    <ImageButton
         android:id="@+id/menu_exit_button"
-        android:layout_width="120dp"
+        android:background="@color/colorBlack"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:clickable="true"
         android:onClick="onExit"
-        android:text="@string/exit_button_title" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/exit" />
 
 </LinearLayout>

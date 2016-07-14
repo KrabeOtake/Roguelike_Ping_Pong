@@ -7,31 +7,42 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#fff"
-    android:orientation="horizontal"
+    android:background="@color/colorBlack"
+    android:orientation="vertical"
     android:gravity="center"
     tools:context="com.example.pingpong.MenuActivity">
 
-    <Button
+    <ImageButton
         android:id="@+id/easy_button"
-        android:layout_width="120dp"
+        android:background="@color/colorBlack"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/difficulty_easy"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:onClick="onEasy"
+        android:scaleType="fitCenter"
+        android:src="@drawable/easy" />
 
-    <Button
+    <ImageButton
         android:id="@+id/medium_button"
-        android:layout_width="120dp"
+        android:background="@color/colorBlack"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/difficulty_medium"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:onClick="onMedium"
+        android:scaleType="fitCenter"
+        android:src="@drawable/medium" />
 
-    <Button
+    <ImageButton
         android:id="@+id/hard_button"
-        android:layout_width="120dp"
+        android:background="@color/colorBlack"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/difficulty_hard"
-        android:layout_gravity="center_vertical" />
-
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:onClick="onHard"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hard" />
 
 </LinearLayout>
