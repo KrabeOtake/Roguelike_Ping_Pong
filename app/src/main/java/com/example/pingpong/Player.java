@@ -9,6 +9,7 @@ public abstract class Player {
     private int y;
     private int height;
     private int width;
+    public static final int PLAYER_SPEED = 30;
 
     public Player(int x, int y, int width, int height) {
         this.x = x;
@@ -31,5 +32,10 @@ public abstract class Player {
 
     public int getWidth() {
         return width;
+    }
+
+    public void moveTo(int y1) {
+        int dy = (y1 - y) * PLAYER_SPEED / GameManager.heightScreen;
+        y += dy;
     }
 }
