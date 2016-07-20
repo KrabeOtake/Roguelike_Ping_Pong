@@ -4,7 +4,7 @@ package com.example.pingpong;
  * Created by Сергей Пинкевич on 18.07.2016.
  */
 
-public class Player {
+public abstract class Player {
     private int x;
     private int y;
     private int height;
