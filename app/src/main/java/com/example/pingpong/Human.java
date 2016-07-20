@@ -5,7 +5,7 @@ package com.example.pingpong;
  */
 public class Human extends Player {
 
-    public Human(int x, int y, int height, int width) {
-        super(x, y, height, width);
+    public Human(int x, int y, int width, int height) {
+        super(x, y, width, height);
     }
 }

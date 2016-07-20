@@ -31,7 +31,7 @@ public class GameManager {
     }
 
     public void initPlayers() {
-        player = new Human(0, 0, 100, 15);
+        player = new Human(200, 0, 15, 100);
     }
 
     public void initPaint() {

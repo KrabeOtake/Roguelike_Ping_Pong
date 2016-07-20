@@ -10,7 +10,7 @@ public abstract class Player {
     private int height;
     private int width;
 
-    public Player(int x, int y, int height, int width) {
+    public Player(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.height = height;
