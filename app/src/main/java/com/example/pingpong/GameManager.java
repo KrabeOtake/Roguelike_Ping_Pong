@@ -1,7 +1,5 @@
 package com.example.pingpong;
 
-import android.graphics.Canvas;
-
 /**
  * Created by Сергей Пинкевич on 19.07.2016.
  */
@@ -23,11 +21,11 @@ public class GameManager {
     }
 
     public void initBall() {
-        ball = new Ball(heightScreen / 2, widthScreen / 2);
+        ball = new Ball(widthScreen / 2, heightScreen / 2);
     }
 
     public void initPlayers() {
-        player = new Human(0, 0, 15, 100);
+        player = new Human(widthScreen / 10, 0, 15, 100);
     }
 
     public void onDraw() {

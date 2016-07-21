@@ -6,8 +6,6 @@
     android:background="@color/colorBlack"
     tools:context="com.example.pingpong.GameActivity">
 
-
-    // Connection with Canvas View
     <com.example.pingpong.CanvasView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

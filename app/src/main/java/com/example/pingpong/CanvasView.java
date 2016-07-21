@@ -5,6 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.drawable.shapes.RectShape;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -42,8 +44,8 @@ public class CanvasView extends View implements ICanvasView {
         Display display = windowManager.getDefaultDisplay();
         Point point = new Point();
         display.getSize(point);
-        heightScreen = point.x;
-        widthScreen = point.y;
+        heightScreen = point.y;
+        widthScreen = point.x;
     }
 
     @Override
