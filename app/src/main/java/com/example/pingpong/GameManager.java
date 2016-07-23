@@ -1,5 +1,7 @@
 package com.example.pingpong;
 
+import android.os.Handler;
+
 /**
  * Created by Сергей Пинкевич on 19.07.2016.
  */
@@ -20,6 +22,7 @@ public class GameManager {
         widthScreen = w;
         initBall();
         initPlayers();
+        moveBall();
     }
 
     public void initBall() {
@@ -38,5 +41,16 @@ public class GameManager {
 
     public void onTouchEvent(int y) {
         player.moveTo(y);
+    }
+
+    public void moveBall() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                ball.move();
+                handler.postDelayed(this, 25); // 40 FPS = 1000 msec / 25
+            }
+        });
     }
 }
