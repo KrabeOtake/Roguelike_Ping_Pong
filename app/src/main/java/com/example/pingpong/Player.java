@@ -37,6 +37,6 @@ public abstract class Player {
     public void moveTo(int y1) {
         int dy = (y1 - y) * PLAYER_SPEED / GameManager.heightScreen;
         y += dy;
-        height += dy; // it os necessary for drawing rectangle
+        height += dy; // it is necessary for drawing rectangle
     }
 }

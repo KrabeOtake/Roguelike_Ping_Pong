@@ -11,6 +11,8 @@ public class GameManager {
     private CanvasView canvasView;
     public static int heightScreen;
     public static int widthScreen;
+    public static final int PLAYER_HEIGHT = 100;
+    public static final int PLAYER_WIDTH = 10;
 
     public GameManager(CanvasView canvasView, int h, int w) {
         this.canvasView = canvasView;
@@ -25,7 +27,8 @@ public class GameManager {
     }
 
     public void initPlayers() {
-        player = new Human(widthScreen / 10, 0, 15, 100);
+        player = new Human(widthScreen / 10, heightScreen / 2 - PLAYER_HEIGHT / 2,
+                PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 
     public void onDraw() {
