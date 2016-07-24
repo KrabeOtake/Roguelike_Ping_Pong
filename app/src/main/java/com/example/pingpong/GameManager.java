@@ -25,10 +25,16 @@ public class GameManager {
         moveBall();
     }
 
+    /**
+     * create ball in the center of the screen
+     */
     public void initBall() {
         ball = new Ball(widthScreen / 2, heightScreen / 2);
     }
 
+    /**
+     * create player on the left side, in vertical center
+     */
     public void initPlayers() {
         player = new Human(widthScreen / 10, heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -48,7 +54,7 @@ public class GameManager {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                ball.move();
+                ball.move(player);
                 handler.postDelayed(this, 25); // 40 FPS = 1000 msec / 25
             }
         });

@@ -33,10 +33,11 @@ public class Ball {
         return radius;
     }
 
-    public void move() {
-        y += dy;
+    public void move(Player player) {
         x += dx;
+        y += dy;
         checkBounds();
+        checkCollisions(player);
     }
 
     public void checkBounds() {
@@ -44,5 +45,13 @@ public class Ball {
             dx = -dx;
         if (y > GameManager.heightScreen || y < 0)
             dy = -dy;
+    }
+
+    public void checkCollisions(Player player) {
+        if ((x > player.getX() && x < player.getWidth())
+                && (y > player.getY() && y < player.getHeight())) {
+            dx = -dx;
+            dy = -dy;
+        }
     }
 }
