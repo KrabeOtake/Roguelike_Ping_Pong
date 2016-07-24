@@ -1,7 +1,8 @@
 package com.example.pingpong;
 
 import android.os.Handler;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Сергей Пинкевич on 19.07.2016.
@@ -10,7 +11,7 @@ import android.widget.Toast;
 public class GameManager {
 
     private Ball ball;
-    private Player player;
+    private ArrayList<Player> players;
     private CanvasView canvasView;
     public static int heightScreen;
     public static int widthScreen;
@@ -23,6 +24,7 @@ public class GameManager {
         heightScreen = h;
         widthScreen = w;
         difficulty = GameActivity.gameDifficulty;
+        players = new ArrayList<>();
         initBall();
         initPlayers();
         moveBall();
@@ -37,19 +39,24 @@ public class GameManager {
 
     /**
      * create player on the left side, in vertical center
+     * create bot on the right side, in vertical center
      */
     public void initPlayers() {
-        player = new Human(widthScreen / 10, heightScreen / 2 - PLAYER_HEIGHT / 2,
+        Player player1 = new Human(widthScreen / 10, heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
+        Player player2 = new Bot((int)(widthScreen * 0.9), heightScreen / 2 - PLAYER_HEIGHT / 2,
+                PLAYER_WIDTH, PLAYER_HEIGHT);
+        players.add(player1);
+        players.add(player2);
     }
 
     public void onDraw() {
-        canvasView.drawPlayer(player);
+        canvasView.drawPlayers(players);
         canvasView.drawBall(ball);
     }
 
     public void onTouchEvent(int y) {
-        player.moveTo(y);
+        players.get(0).moveTo(y);
     }
 
     public void moveBall() {
@@ -57,9 +64,16 @@ public class GameManager {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                ball.move(player);
+                ball.move(players);
                 handler.postDelayed(this, 25); // 40 FPS = 1000 msec / 25
             }
         });
+    }
+
+    public boolean gameOver() {
+        for (int i = 0; i < players.size(); i++)
+            if (players.get(i).getScore() == 10)
+                return true;
+        return false;
     }
 }

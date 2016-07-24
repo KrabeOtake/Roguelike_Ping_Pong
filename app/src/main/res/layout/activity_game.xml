@@ -6,6 +6,26 @@
     android:background="@color/colorBlack"
     tools:context="com.example.pingpong.GameActivity">
 
+    <ImageView
+        android:id="@+id/score_1"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="150dp"
+        android:src="@drawable/score0" />
+
+    <ImageView
+        android:id="@+id/score_2"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="150dp"
+        android:src="@drawable/score0" />
+
     <com.example.pingpong.CanvasView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

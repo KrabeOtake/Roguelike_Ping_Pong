@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+
 /**
  * Created by Сергей Пинкевич on 18.07.2016.
  */
@@ -54,8 +56,10 @@ public class CanvasView extends View implements ICanvasView {
     }
 
     @Override
-    public void drawPlayer(Player player) {
-        canvas.drawRect(player.getX(), player.getY(), player.getWidth(), player.getHeight(), paint);
+    public void drawPlayers(ArrayList<Player> players) {
+        for (int i = 0; i < players.size(); i++)
+            canvas.drawRect(players.get(i).getX(), players.get(i).getY(), players.get(i).getWidth(),
+                    players.get(i).getHeight(), paint);
     }
 
     @Override

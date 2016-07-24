@@ -1,5 +1,7 @@
 package com.example.pingpong;
 
+import java.util.ArrayList;
+
 /**
  * Created by Сергей Пинкевич on 18.07.2016.
  */
@@ -33,11 +35,11 @@ public class Ball {
         return radius;
     }
 
-    public void move(Player player) {
+    public void move(ArrayList<Player> players) {
         x += dx;
         y += dy;
         checkBounds();
-        checkCollisions(player);
+        checkCollisions(players);
     }
 
     public void checkBounds() {
@@ -47,11 +49,13 @@ public class Ball {
             dy = -dy;
     }
 
-    public void checkCollisions(Player player) {
-        if ((x > player.getX() && x < player.getWidth())
-                && (y > player.getY() && y < player.getHeight())) {
-            dx = -dx;
-            dy = -dy;
+    public void checkCollisions(ArrayList<Player> players) {
+        for (int i = 0; i < players.size(); i++) {
+            if ((x > players.get(i).getX() && x < players.get(i).getWidth())
+                    && (y > players.get(i).getY() && y < players.get(i).getHeight())) {
+                dx = -dx;
+                dy = -dy;
+            }
         }
     }
 }

@@ -5,17 +5,19 @@ package com.example.pingpong;
  */
 
 public abstract class Player {
-    protected int x;
-    protected int y;
-    protected int height;
-    protected int width;
+    private int x;
+    private int y;
+    private int height;
+    private int width;
     public static final int PLAYER_SPEED = 30;
+    private int score;
 
     public Player(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.height = y + height;
         this.width = x + width;
+        score = 0;
     }
 
     public int getX() {
@@ -38,5 +40,9 @@ public abstract class Player {
         int dy = (y1 - y) * PLAYER_SPEED / GameManager.heightScreen;
         y += dy;
         height += dy; // it is necessary for drawing rectangle
+    }
+
+    public int getScore() {
+        return score;
     }
 }
