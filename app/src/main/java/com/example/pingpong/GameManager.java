@@ -1,6 +1,7 @@
 package com.example.pingpong;
 
 import android.os.Handler;
+import android.widget.Toast;
 
 /**
  * Created by Сергей Пинкевич on 19.07.2016.
@@ -15,11 +16,13 @@ public class GameManager {
     public static int widthScreen;
     public static final int PLAYER_HEIGHT = 100;
     public static final int PLAYER_WIDTH = 10;
+    private int difficulty;
 
     public GameManager(CanvasView canvasView, int h, int w) {
         this.canvasView = canvasView;
         heightScreen = h;
         widthScreen = w;
+        difficulty = GameActivity.gameDifficulty;
         initBall();
         initPlayers();
         moveBall();

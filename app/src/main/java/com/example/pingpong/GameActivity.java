@@ -7,7 +7,7 @@ import android.os.Bundle;
 public class GameActivity extends Activity {
 
     public static final String DIFFICULTY = "difficulty";
-    private static int gameDifficulty;
+    public static int gameDifficulty = 2;
     // 1 - easy
     // 2 - medium
     // 3 - hard
