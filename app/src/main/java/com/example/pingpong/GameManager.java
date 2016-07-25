@@ -116,9 +116,12 @@ public class GameManager {
     }
 
     public  void resetPlayersPosition() {
-        for(Player p : players) {
-            p.setHeight(PLAYER_HEIGHT);
-            p.setY(heightScreen / 2 - PLAYER_HEIGHT / 2);
-        }
+        players.get(0).setX(widthScreen / 10);
+        players.get(0).setY(heightScreen / 2 - PLAYER_HEIGHT / 2);
+        players.get(0).setWidth(PLAYER_WIDTH);
+        players.get(0).setHeight(PLAYER_HEIGHT);
+        canvasView.drawPlayers(players);
+        canvasView.invalidate();
+        System.out.println(players.get(0).getX() + "   " + players.get(0).getY());
     }
 }

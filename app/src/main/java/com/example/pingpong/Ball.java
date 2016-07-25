@@ -16,7 +16,7 @@ public class Ball {
     private int dy;
 
     public Ball(int x, int y) {
-        dx = BALL_SPEED;
+        dx = -BALL_SPEED;
         dy = BALL_SPEED;
         this.x = x;
         this.y = y;
