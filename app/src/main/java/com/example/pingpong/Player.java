@@ -49,4 +49,12 @@ public abstract class Player {
     public void addScore() {
         score++;
     }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
 }

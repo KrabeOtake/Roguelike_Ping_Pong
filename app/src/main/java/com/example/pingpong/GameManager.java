@@ -17,6 +17,7 @@ public class GameManager {
     public static int widthScreen;
     public static final int PLAYER_HEIGHT = 100;
     public static final int PLAYER_WIDTH = 10;
+    private final int COORDINATE_PAUSE = 40;
     private int difficulty;
 
     public GameManager(CanvasView canvasView, int h, int w) {
@@ -80,14 +81,14 @@ public class GameManager {
     }
 
     public boolean roundOver() {
-        if (ball.getX() < 0) {
+        if (ball.getX() < -COORDINATE_PAUSE) {
             players.get(0).addScore();
-            initGame();
+            resetGame();
             return true;
         }
-        if (ball.getX() > widthScreen) {
+        if (ball.getX() > widthScreen + COORDINATE_PAUSE) {
             players.get(1).addScore();
-            initGame();
+            resetGame();
             return true;
         }
         return false;
@@ -102,5 +103,22 @@ public class GameManager {
             if (players.get(i).getScore() == 10)
                 return true;
         return false;
+    }
+
+    public void resetGame(){
+        resetBallPosition();
+        resetPlayersPosition();
+    }
+
+    public void resetBallPosition() {
+        ball.setX(widthScreen / 2);
+        ball.setY(heightScreen / 2);
+    }
+
+    public  void resetPlayersPosition() {
+        for(Player p : players) {
+            p.setHeight(PLAYER_HEIGHT);
+            p.setY(heightScreen / 2 - PLAYER_HEIGHT / 2);
+        }
     }
 }
