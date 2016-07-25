@@ -70,6 +70,10 @@ public class GameManager {
         });
     }
 
+    public void changeScores() {
+
+    }
+
     public boolean gameOver() {
         for (int i = 0; i < players.size(); i++)
             if (players.get(i).getScore() == 10)

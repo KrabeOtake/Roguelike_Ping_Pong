@@ -51,11 +51,9 @@ public class Ball {
 
     public void checkCollisions(ArrayList<Player> players) {
         for (int i = 0; i < players.size(); i++) {
-            if ((x > players.get(i).getX() && x < players.get(i).getWidth())
-                    && (y > players.get(i).getY() && y < players.get(i).getHeight())) {
+            if ((x > players.get(i).getX() && x < players.get(i).getWidth()) &&
+                    (y > players.get(i).getY() && y < players.get(i).getHeight()))
                 dx = -dx;
-                dy = -dy;
-            }
         }
     }
 }
