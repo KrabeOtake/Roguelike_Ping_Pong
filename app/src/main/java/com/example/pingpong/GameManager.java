@@ -25,8 +25,16 @@ public class GameManager {
         widthScreen = w;
         difficulty = GameActivity.gameDifficulty;
         players = new ArrayList<>();
+        initGame();
+    }
+
+    public void initGame() {
         initBall();
         initPlayers();
+        gameProcess();
+    }
+
+    public void gameProcess() {
         moveBall();
     }
 
@@ -65,13 +73,28 @@ public class GameManager {
             @Override
             public void run() {
                 ball.move(players);
+                roundOver();
                 handler.postDelayed(this, 25); // 40 FPS = 1000 msec / 25
             }
         });
     }
 
-    public void changeScores() {
+    public boolean roundOver() {
+        if (ball.getX() < 0) {
+            players.get(0).addScore();
+            initGame();
+            return true;
+        }
+        if (ball.getX() > widthScreen) {
+            players.get(1).addScore();
+            initGame();
+            return true;
+        }
+        return false;
+    }
 
+    public void changeScores() {
+        canvasView.changeScores();
     }
 
     public boolean gameOver() {

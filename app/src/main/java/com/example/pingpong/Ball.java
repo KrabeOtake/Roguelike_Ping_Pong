@@ -43,8 +43,8 @@ public class Ball {
     }
 
     public void checkBounds() {
-        if (x > GameManager.widthScreen || x < 0)
-            dx = -dx;
+//        if (x > GameManager.widthScreen || x < 0)
+//            dx = -dx;
         if (y > GameManager.heightScreen || y < 0)
             dy = -dy;
     }
