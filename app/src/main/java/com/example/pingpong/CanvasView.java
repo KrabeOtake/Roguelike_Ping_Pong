@@ -10,7 +10,6 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -26,6 +25,8 @@ public class CanvasView extends View implements ICanvasView {
     private GameManager manager;
     private Paint paint;
     private Canvas canvas;
+    private ImageView scorePlayer1;
+    private ImageView scorePlayer2;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -77,5 +78,55 @@ public class CanvasView extends View implements ICanvasView {
             manager.onTouchEvent(y);
         invalidate();
         return true;
+    }
+
+    public void changeScore(Player p, int number) {
+        ImageView temp = null;
+        if (number == 1)
+            temp = scorePlayer1;
+        if (number == 2)
+            temp = scorePlayer2;
+
+        switch (p.getScore()) {
+            case 0:
+                temp.setImageResource(R.drawable.score0);
+                break;
+            case 1:
+                temp.setImageResource(R.drawable.score1);
+                break;
+            case 2:
+                temp.setImageResource(R.drawable.score2);
+                break;
+            case 3:
+                temp.setImageResource(R.drawable.score3);
+                break;
+            case 4:
+                temp.setImageResource(R.drawable.score4);
+                break;
+            case 5:
+                temp.setImageResource(R.drawable.score5);
+                break;
+            case 6:
+                temp.setImageResource(R.drawable.score6);
+                break;
+            case 7:
+                temp.setImageResource(R.drawable.score7);
+                break;
+            case 8:
+                temp.setImageResource(R.drawable.score8);
+                break;
+            case 9:
+                temp.setImageResource(R.drawable.score9);
+                break;
+            case 10:
+                temp.setImageResource(R.drawable.score10);
+                break;
+        }
+        invalidate();
+    }
+
+    public void getImageView(ImageView player1, ImageView player2) {
+        scorePlayer1 = player1;
+        scorePlayer2 = player2;
     }
 }

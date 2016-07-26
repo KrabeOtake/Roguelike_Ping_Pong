@@ -74,25 +74,28 @@ public class GameManager {
             @Override
             public void run() {
                 ball.move(players);
-                if (roundOver())
-                    changeScores();
+                if (isRoundOver()) {
+                    gameOver();
+                }
                 handler.postDelayed(this, 25); // 40 FPS = 1000 msec / 25
             }
         });
     }
 
-    private void changeScores() {
-
+    private void changeScore(Player p, int number) {
+        canvasView.changeScore(p, number);
     }
 
-    public boolean roundOver() {
+    public boolean isRoundOver() {
         if (ball.getX() < -COORDINATE_PAUSE) {
-            players.get(0).addScore();
+            players.get(1).addScore();
+            changeScore(players.get(1), 2);
             resetGame();
             return true;
         }
         if (ball.getX() > widthScreen + COORDINATE_PAUSE) {
-            players.get(1).addScore();
+            players.get(0).addScore();
+            changeScore(players.get(0), 1);
             resetGame();
             return true;
         }
