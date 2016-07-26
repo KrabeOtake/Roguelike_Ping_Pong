@@ -26,8 +26,6 @@ public class CanvasView extends View implements ICanvasView {
     private GameManager manager;
     private Paint paint;
     private Canvas canvas;
-    private ImageView scorePlayer1;
-    private ImageView scorePlayer2;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -79,10 +77,5 @@ public class CanvasView extends View implements ICanvasView {
             manager.onTouchEvent(y);
         invalidate();
         return true;
-    }
-
-    public void changeScores() {
-        GameActivity activity = new GameActivity();
-        scorePlayer1 = (ImageView) activity.findViewById(R.id.score_1);
     }
 }

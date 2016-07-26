@@ -74,10 +74,15 @@ public class GameManager {
             @Override
             public void run() {
                 ball.move(players);
-                roundOver();
+                if (roundOver())
+                    changeScores();
                 handler.postDelayed(this, 25); // 40 FPS = 1000 msec / 25
             }
         });
+    }
+
+    private void changeScores() {
+
     }
 
     public boolean roundOver() {
@@ -92,10 +97,6 @@ public class GameManager {
             return true;
         }
         return false;
-    }
-
-    public void changeScores() {
-        canvasView.changeScores();
     }
 
     public boolean gameOver() {
@@ -115,13 +116,10 @@ public class GameManager {
         ball.setY(heightScreen / 2);
     }
 
-    public  void resetPlayersPosition() {
-        players.get(0).setX(widthScreen / 10);
-        players.get(0).setY(heightScreen / 2 - PLAYER_HEIGHT / 2);
-        players.get(0).setWidth(PLAYER_WIDTH);
-        players.get(0).setHeight(PLAYER_HEIGHT);
-        canvasView.drawPlayers(players);
-        canvasView.invalidate();
-        System.out.println(players.get(0).getX() + "   " + players.get(0).getY());
+    public void resetPlayersPosition() {
+        for (Player p : players) {
+            p.setY(heightScreen / 2 - PLAYER_HEIGHT / 2);
+            p.setHeight(PLAYER_HEIGHT + p.getY());
+        }
     }
 }
