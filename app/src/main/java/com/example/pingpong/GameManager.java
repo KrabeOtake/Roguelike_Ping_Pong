@@ -1,6 +1,7 @@
 package com.example.pingpong;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Handler;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class GameManager {
     public void initPlayers() {
         Player player1 = new Human(widthScreen / 10, heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
+        player1.setScore(8);
         Player player2 = new Bot((int)(widthScreen * 0.9), heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
         players.add(player1);
@@ -107,7 +109,9 @@ public class GameManager {
     public boolean gameOver() {
         for (int i = 0; i < players.size(); i++)
             if (players.get(i).getScore() == 10) {
+                ball = null;
                 Intent intent = new Intent(activity, GameOverActivity.class);
+                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 activity.startActivity(intent);
                 return true;
             }

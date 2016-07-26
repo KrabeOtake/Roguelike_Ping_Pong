@@ -42,6 +42,10 @@ public abstract class Player {
         height += dy; // it is necessary for drawing rectangle
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public int getScore() {
         return score;
     }
