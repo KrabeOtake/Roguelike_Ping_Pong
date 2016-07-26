@@ -27,4 +27,9 @@ public class GameActivity extends Activity {
         ImageView score2 = (ImageView) findViewById(R.id.score_2);
         canvas.getImageView(score1, score2);
     }
+
+    public void gameOver() {
+        Intent intent = new Intent(this, GameOverActivity.class);
+        startActivity(intent);
+    }
 }
