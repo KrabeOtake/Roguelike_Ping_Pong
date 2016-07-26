@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/score_1"
-        android:layout_width="20dp"
         android:layout_height="wrap_content"
+        android:layout_width="20dp"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
         android:layout_alignParentLeft="true"
@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/score_2"
-        android:layout_width="20dp"
         android:layout_height="wrap_content"
+        android:layout_width="20dp"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
         android:layout_alignParentRight="true"

@@ -118,9 +118,6 @@ public class CanvasView extends View implements ICanvasView {
             case 9:
                 temp.setImageResource(R.drawable.score9);
                 break;
-            case 10:
-                temp.setImageResource(R.drawable.score10);
-                break;
         }
         invalidate();
     }
