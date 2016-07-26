@@ -40,6 +40,7 @@ public class GameManager {
 
     public void gameProcess() {
         moveBall();
+        moveBot();
     }
 
     /**
@@ -59,8 +60,25 @@ public class GameManager {
         player1.setScore(8);
         Player player2 = new Bot((int)(widthScreen * 0.9), heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
+        player2.setSpeed(50);           //Setting bigger speed for Bot
         players.add(player1);
         players.add(player2);
+    }
+
+    /**
+     * moving Bot-player
+     * lower delay for less inertion movement
+     */
+    public void moveBot(){
+
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                players.get(1).moveTo(ball.getY());
+                handler.postDelayed(this, 5); // 40 FPS = 1000 msec / 25
+            }
+        });
     }
 
     public void onDraw() {

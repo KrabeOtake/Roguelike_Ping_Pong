@@ -9,7 +9,7 @@ public abstract class Player {
     private int y;
     private int height;
     private int width;
-    public static final int PLAYER_SPEED = 30;
+    private int PLAYER_SPEED = 30;
     private int score;
 
     public Player(int x, int y, int width, int height) {
@@ -60,5 +60,9 @@ public abstract class Player {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public void setSpeed(int s){
+        this.PLAYER_SPEED = s;
     }
 }
