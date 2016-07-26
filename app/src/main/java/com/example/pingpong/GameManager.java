@@ -20,6 +20,7 @@ public class GameManager {
     public static final int PLAYER_WIDTH = 10;
     private final int COORDINATE_PAUSE = 40;
     private int difficulty;
+    private GameActivity activity;
 
     public GameManager(CanvasView canvasView, int h, int w) {
         this.canvasView = canvasView;
@@ -105,8 +106,11 @@ public class GameManager {
 
     public boolean gameOver() {
         for (int i = 0; i < players.size(); i++)
-            if (players.get(i).getScore() == 10)
+            if (players.get(i).getScore() == 10) {
+                Intent intent = new Intent(activity, GameOverActivity.class);
+                activity.startActivity(intent);
                 return true;
+            }
         return false;
     }
 
@@ -125,5 +129,9 @@ public class GameManager {
             p.setY(heightScreen / 2 - PLAYER_HEIGHT / 2);
             p.setHeight(PLAYER_HEIGHT + p.getY());
         }
+    }
+
+    public void setActivity(GameActivity activity) {
+        this.activity = activity;
     }
 }

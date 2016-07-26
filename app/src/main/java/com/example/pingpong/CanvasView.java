@@ -127,4 +127,8 @@ public class CanvasView extends View implements ICanvasView {
         scorePlayer1 = player1;
         scorePlayer2 = player2;
     }
+
+    public GameManager getManager() {
+        return manager;
+    }
 }
