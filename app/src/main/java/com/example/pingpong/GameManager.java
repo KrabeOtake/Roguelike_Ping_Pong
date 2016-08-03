@@ -47,7 +47,7 @@ public class GameManager {
      * create ball in the center of the screen
      */
     public void initBall() {
-        ball = new Ball(widthScreen / 2, heightScreen / 2);
+        ball = new Ball(widthScreen / 2, heightScreen / 2, activity);
     }
 
     /**
@@ -57,10 +57,9 @@ public class GameManager {
     public void initPlayers() {
         Player player1 = new Human(widthScreen / 10, heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
-        player1.setScore(8);
         Player player2 = new Bot((int)(widthScreen * 0.9), heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
-        player2.setSpeed(50);           //Setting bigger speed for Bot
+        player2.setSpeed(50); //Setting bigger speed for Bot
         players.add(player1);
         players.add(player2);
     }
@@ -69,13 +68,12 @@ public class GameManager {
      * moving Bot-player
      * lower delay for less inertion movement
      */
-    public void moveBot(){
-
+    public void moveBot() {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                players.get(1).moveTo(ball.getY());
+                players.get(1).moveTo(ball.getY() - players.get(1).getY() / 2);
                 handler.postDelayed(this, 5); // 40 FPS = 1000 msec / 25
             }
         });
@@ -87,6 +85,7 @@ public class GameManager {
     }
 
     public void onTouchEvent(int y) {
+//        y -= players.get(0).getHeight() / 2;
         players.get(0).moveTo(y);
     }
 

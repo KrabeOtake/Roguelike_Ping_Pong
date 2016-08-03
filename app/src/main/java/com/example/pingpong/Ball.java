@@ -1,5 +1,9 @@
 package com.example.pingpong;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaPlayer;
+
 import java.util.ArrayList;
 
 /**
@@ -14,13 +18,17 @@ public class Ball {
     private final int BALL_SPEED = 8;
     private int dx;
     private int dy;
+    private GameActivity activity;
 
-    public Ball(int x, int y) {
+    private MediaPlayer player;
+
+    public Ball(int x, int y, GameActivity activity) {
         dx = -BALL_SPEED;
         dy = BALL_SPEED;
         this.x = x;
         this.y = y;
         this.radius = INIT_RADIUS;
+        this.activity = activity;
     }
 
     public int getX() {
@@ -43,17 +51,21 @@ public class Ball {
     }
 
     public void checkBounds() {
-//        if (x > GameManager.widthScreen || x < 0)
-//            dx = -dx;
-        if (y > GameManager.heightScreen || y < 0)
+        if (y > GameManager.heightScreen || y < 0) {
             dy = -dy;
+//            Intent intent = new Intent(activity, SoundService.class);
+//            activity.startService(intent);
+        }
     }
 
     public void checkCollisions(ArrayList<Player> players) {
         for (int i = 0; i < players.size(); i++) {
             if ((x > players.get(i).getX() && x < players.get(i).getWidth()) &&
-                    (y > players.get(i).getY() && y < players.get(i).getHeight()))
+                    (y > players.get(i).getY() && y < players.get(i).getHeight())) {
                 dx = -dx;
+//                Intent intent = new Intent(activity, SoundService.class);
+//                activity.startService(intent);
+            }
         }
     }
 
