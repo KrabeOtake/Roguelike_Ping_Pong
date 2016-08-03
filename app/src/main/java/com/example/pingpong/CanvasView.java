@@ -2,6 +2,7 @@ package com.example.pingpong;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -28,11 +29,13 @@ public class CanvasView extends View implements ICanvasView {
     private Canvas canvas;
     private ImageView scorePlayer1;
     private ImageView scorePlayer2;
+    private GameActivity activity;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initScreenSize(context);
         manager = new GameManager(this, heightScreen, widthScreen);
+        manager.setActivity(activity);
         initPaint();
     }
 
@@ -130,5 +133,9 @@ public class CanvasView extends View implements ICanvasView {
 
     public GameManager getManager() {
         return manager;
+    }
+
+    public void setActivity(GameActivity activity) {
+        this.activity = activity;
     }
 }

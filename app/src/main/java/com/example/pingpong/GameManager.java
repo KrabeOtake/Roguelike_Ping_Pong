@@ -19,7 +19,7 @@ public class GameManager {
     public static int widthScreen;
     public static final int PLAYER_HEIGHT = 100;
     public static final int PLAYER_WIDTH = 10;
-    private final int COORDINATE_PAUSE = 40;
+    private final int COORDINATE_PAUSE = 100;
     private int difficulty;
     private GameActivity activity;
 
@@ -60,6 +60,7 @@ public class GameManager {
         Player player2 = new Bot((int)(widthScreen * 0.9), heightScreen / 2 - PLAYER_HEIGHT / 2,
                 PLAYER_WIDTH, PLAYER_HEIGHT);
         player2.setSpeed(50); //Setting bigger speed for Bot
+        player2.setScore(8);
         players.add(player1);
         players.add(player2);
     }
@@ -74,7 +75,7 @@ public class GameManager {
             @Override
             public void run() {
                 players.get(1).moveTo(ball.getY() - players.get(1).getY() / 2);
-                handler.postDelayed(this, 5); // 40 FPS = 1000 msec / 25
+                handler.postDelayed(this, 5);
             }
         });
     }
@@ -96,43 +97,46 @@ public class GameManager {
             public void run() {
                 ball.move(players);
                 if (isRoundOver()) {
-                    gameOver();
+                    checkGameIsOver();
                 }
                 handler.postDelayed(this, 25); // 40 FPS = 1000 msec / 25
             }
         });
     }
 
-    private void changeScore(Player p, int number) {
+    private void redrawScore(Player p, int number) {
         canvasView.changeScore(p, number);
     }
 
     public boolean isRoundOver() {
         if (ball.getX() < -COORDINATE_PAUSE) {
-            players.get(1).addScore();
-            changeScore(players.get(1), 2);
-            resetGame();
+            changeScore(1);
             return true;
         }
         if (ball.getX() > widthScreen + COORDINATE_PAUSE) {
-            players.get(0).addScore();
-            changeScore(players.get(0), 1);
-            resetGame();
+            changeScore(0);
             return true;
         }
         return false;
     }
 
-    public boolean gameOver() {
+    public void changeScore(int number) {
+        players.get(number).addScore();
+        redrawScore(players.get(number), number + 1);
+        resetGame();
+    }
+
+    public void checkGameIsOver() {
         for (int i = 0; i < players.size(); i++)
             if (players.get(i).getScore() == 10) {
                 ball = null;
-                Intent intent = new Intent(activity, GameOverActivity.class);
+                Intent intent = new Intent(activity.getApplicationContext(), GameOverActivity.class);
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 activity.startActivity(intent);
-                return true;
+                activity.finish();
+                activity.overridePendingTransition(0, 0);
             }
-        return false;
     }
 
     public void resetGame(){
