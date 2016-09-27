@@ -30,6 +30,6 @@ public class GameActivity extends Activity {
         canvas.getImageView(score1, score2);
 
         manager = canvas.getManager();
-        manager.setActivity(this);
+        canvas.setActivity(this);
     }
 }
