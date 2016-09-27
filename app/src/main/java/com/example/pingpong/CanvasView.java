@@ -24,6 +24,7 @@ public class CanvasView extends View implements ICanvasView {
     private static int heightScreen;
     private static int widthScreen;
     private GameManager manager;
+    private Maze maze;
     private Paint paint;
     private Canvas canvas;
     private ImageView scorePlayer1;
@@ -128,7 +129,17 @@ public class CanvasView extends View implements ICanvasView {
         scorePlayer2 = player2;
     }
 
+    public void drawTiles(ArrayList<Tile> tiles){
+        for (int i = 0; i < tiles.size(); i++)
+            canvas.drawRect(tiles.get(i).getX(), tiles.get(i).getY(),9,9,paint);
+    }
+
+
     public GameManager getManager() {
         return manager;
+    }
+
+    public Maze getMaze() {
+        return maze;
     }
 }

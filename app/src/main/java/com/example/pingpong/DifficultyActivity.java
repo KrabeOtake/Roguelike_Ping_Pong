@@ -18,7 +18,7 @@ public class DifficultyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficulty);
-        intent = new Intent(this, GameActivity.class);
+        intent = new Intent(this, MazeActivity.class);
     }
 
     public void onEasy(View v) {
